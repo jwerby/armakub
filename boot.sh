@@ -2,7 +2,7 @@
 
 set -e
 
-read -r -d '' ascii_art <<'EOF'
+read -r -d '' ascii_art <<'EOF' || true
     _                            _         _
    / \   _ __ _ __ ___   __ _| | __ _| |_
   / _ \ | '__| '_ ` _ \ / _` | |/ _` | __|
