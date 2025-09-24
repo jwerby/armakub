@@ -2,22 +2,22 @@
 
 set -e
 
-ascii_art='________                  __        ___.
-\_____  \   _____ _____  |  | ____ _\_ |__
- /   |   \ /     \\__   \ |  |/ /  |  \ __ \
-/    |    \  Y Y  \/ __ \|    <|  |  / \_\ \
-\_______  /__|_|  (____  /__|_ \____/|___  /
-        \/      \/     \/     \/         \/
-'
+read -r -d '' ascii_art <<'EOF'
+    _                            _         _
+   / \   _ __ _ __ ___   __ _| | __ _| |_
+  / _ \ | '__| '_ ` _ \ / _` | |/ _` | __|
+ / ___ \| |  | | | | | | (_| | | (_| | |_
+/_/   \_\_|  |_| |_| |_|\__,_|_|\__,_|\__|
+EOF
 
 echo -e "$ascii_art"
-echo "=> Omakub is for fresh Ubuntu 24.04+ installations only!"
+echo "=> Armakub is for fresh Ubuntu 24.04+ installations only!"
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 sudo apt-get update >/dev/null
 sudo apt-get install -y git >/dev/null
 
-echo "Cloning Omakub..."
+echo "Cloning Armakub..."
 rm -rf ~/.local/share/omakub
 
 OMAKUB_REMOTE=${OMAKUB_REMOTE:-https://github.com/jwerby/armakub.git}

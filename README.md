@@ -1,8 +1,8 @@
-# Omakub
+# Armakub
 
-Turn a fresh Ubuntu installation into a fully-configured, beautiful, and modern web development system by running a single command. That's the one-line pitch for Omakub. No need to write bespoke configs for every essential tool just to get started or to be up on all the latest command-line tools. Omakub is an opinionated take on what Linux can be at its best.
+Armakub is an ARM64-first fork of Omakub. Turn a fresh Ubuntu installation into a fully-configured, beautiful, and modern web development system by running a single command. No need to write bespoke configs for every essential tool just to get started or to be up on all the latest command-line tools. Armakub keeps Omakub's opinions while ensuring modern ARM laptops and desktops feel first-class.
 
-Watch the introduction video and read more at [omakub.org](https://omakub.org).
+Watch the introduction video and read more about the original project at [omakub.org](https://omakub.org).
 
 ## Contributing to the documentation
 
@@ -27,6 +27,8 @@ wget -qO- https://raw.githubusercontent.com/jwerby/armakub/main/boot.sh | bash
 ```
 
 You can override the source repository or branch/tag with the `OMAKUB_REMOTE` and `OMAKUB_REF` environment variables when invoking the script.
+
+Once installed, both `armakub` (new) and `omakub` (legacy) commands are available in your shell so existing muscle-memory still works.
 
 ## Supported platforms
 
