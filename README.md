@@ -18,6 +18,16 @@ While omakub is purposed to be an opinionated take, the open source community of
 
 [⇒ Browse the omakub extensions.](EXTENSIONS.md)
 
+## Install
+
+Run the bootstrap script on a fresh Ubuntu Desktop 24.04+ machine:
+
+```
+wget -qO- https://raw.githubusercontent.com/jwerby/armakub/main/boot.sh | bash
+```
+
+You can override the source repository or branch/tag with the `OMAKUB_REMOTE` and `OMAKUB_REF` environment variables when invoking the script.
+
 ## Supported platforms
 
 Omakub targets Ubuntu Desktop 24.04 or newer on 64-bit systems. The installer now runs on both traditional x86_64/amd64 machines and ARM64/aarch64 hardware. A handful of optional third-party applications only publish x86_64 builds; during installation those entries are skipped automatically on ARM with a short notice so the rest of the setup can complete successfully.

@@ -19,10 +19,13 @@ sudo apt-get install -y git >/dev/null
 
 echo "Cloning Omakub..."
 rm -rf ~/.local/share/omakub
-git clone https://github.com/basecamp/omakub.git ~/.local/share/omakub >/dev/null
-if [[ $OMAKUB_REF != "master" ]]; then
+
+OMAKUB_REMOTE=${OMAKUB_REMOTE:-https://github.com/jwerby/armakub.git}
+git clone "$OMAKUB_REMOTE" ~/.local/share/omakub >/dev/null
+
+if [ -n "$OMAKUB_REF" ]; then
 	cd ~/.local/share/omakub
-	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
+	git fetch origin "$OMAKUB_REF" && git checkout "$OMAKUB_REF"
 	cd -
 fi
 
