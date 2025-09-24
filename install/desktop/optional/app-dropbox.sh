@@ -8,6 +8,7 @@ fi
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Dropbox install: nautilus-dropbox package targets amd64 only."
   omakub_return
+  return
 fi
 
 sudo apt install -y nautilus-dropbox >/dev/null

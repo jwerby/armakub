@@ -8,6 +8,7 @@ fi
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ] && [ "$OMAKUB_DEB_ARCH" != "arm64" ]; then
   echo "Skipping Zoom install: no package available for architecture $OMAKUB_DEB_ARCH"
   omakub_return
+  return
 fi
 
 cd /tmp

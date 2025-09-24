@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ] && [ "$OMAKUB_DEB_ARCH" != "arm64" ]; then
   echo "Skipping Brave install: no package available for architecture $OMAKUB_DEB_ARCH"
   omakub_return
+  return
 fi
 
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg

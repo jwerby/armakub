@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Mainline Kernel tool install: PPA packages are available for amd64 only."
   omakub_return
+  return
 fi
 
 sudo add-apt-repository -y ppa:cappelikan/ppa

@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_ARCH" != "x86_64" ]; then
   echo "Skipping Ollama install: upstream installer does not support architecture $OMAKUB_ARCH"
   omakub_return
+  return
 fi
 
 curl -fsSL https://ollama.com/install.sh | sh

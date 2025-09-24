@@ -8,6 +8,7 @@ WHATSAPP_BROWSER=$(command -v google-chrome || command -v chromium || true)
 if [ -z "$WHATSAPP_BROWSER" ]; then
   echo "Skipping WhatsApp shortcut: neither google-chrome nor chromium is installed."
   omakub_return
+  return
 fi
 
 cat <<EOF >~/.local/share/applications/WhatsApp.desktop

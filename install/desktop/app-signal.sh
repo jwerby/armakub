@@ -8,11 +8,13 @@ if [ "$OMAKUB_DEB_ARCH" = "arm64" ]; then
   echo "Installing Signal via Flatpak on ARM64."
   flatpak install -y flathub org.signal.Signal
   omakub_return
+  return
 fi
 
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Signal desktop install: no package available for architecture $OMAKUB_DEB_ARCH"
   omakub_return
+  return
 fi
 
 wget -qO- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor >signal-desktop-keyring.gpg

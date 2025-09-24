@@ -14,6 +14,7 @@ case "$OMAKUB_ARCH" in
   *)
     echo "Skipping Neovim binary install: no release available for architecture $OMAKUB_ARCH"
     omakub_return
+    return
     ;;
 esac
 

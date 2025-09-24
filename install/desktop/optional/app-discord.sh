@@ -9,11 +9,13 @@ if [ "$OMAKUB_DEB_ARCH" = "arm64" ]; then
   echo "Installing Discord via Flatpak on ARM64."
   flatpak install -y flathub com.discordapp.Discord
   omakub_return
+  return
 fi
 
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Discord install: no package available for architecture $OMAKUB_DEB_ARCH"
   omakub_return
+  return
 fi
 
 cd /tmp

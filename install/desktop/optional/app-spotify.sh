@@ -9,11 +9,13 @@ if [ "$OMAKUB_DEB_ARCH" = "arm64" ]; then
   echo "Installing Spotify via Flatpak on ARM64."
   flatpak install -y flathub com.spotify.Client
   omakub_return
+  return
 fi
 
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Spotify install: no package available for architecture $OMAKUB_DEB_ARCH"
   omakub_return
+  return
 fi
 
 curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg

@@ -11,12 +11,14 @@ case "$OMAKUB_ARCH" in
     sudo snap install chromium
     xdg-settings set default-web-browser chromium_chromium.desktop || true
     omakub_return
+    return
     ;;
   x86_64)
     ;;
   *)
     echo "Skipping Chrome install: no package available for architecture $OMAKUB_ARCH"
     omakub_return
+    return
     ;;
 esac
 

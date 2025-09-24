@@ -11,6 +11,7 @@ fi
 if [ "$OMAKUB_ARCH" != "x86_64" ]; then
   echo "Skipping VirtualBox install: Oracle only supports x86_64 builds."
   omakub_return
+  return
 fi
 
 sudo apt install -y virtualbox virtualbox-ext-pack

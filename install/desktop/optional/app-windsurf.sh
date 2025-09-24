@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_DEB_ARCH" != "amd64" ]; then
   echo "Skipping Windsurf install: upstream currently publishes amd64 packages only."
   omakub_return
+  return
 fi
 
 curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o /usr/share/keyrings/windsurf-stable-archive-keyring.gpg

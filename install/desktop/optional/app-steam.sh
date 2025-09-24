@@ -8,6 +8,7 @@ fi
 if [ "$OMAKUB_ARCH" != "x86_64" ]; then
   echo "Skipping Steam install: Valve does not provide native packages for architecture $OMAKUB_ARCH."
   omakub_return
+  return
 fi
 
 cd /tmp

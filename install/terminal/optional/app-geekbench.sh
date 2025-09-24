@@ -16,6 +16,7 @@ case "$OMAKUB_ARCH" in
   *)
     echo "Skipping Geekbench install: no package available for architecture $OMAKUB_ARCH"
     omakub_return
+    return
     ;;
 esac
 

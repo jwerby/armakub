@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_ARCH" != "x86_64" ]; then
   echo "Skipping Cursor install: upstream only provides linux-x64 builds."
   omakub_return
+  return
 fi
 
 cd /tmp

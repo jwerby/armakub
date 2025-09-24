@@ -8,6 +8,7 @@ BASE_BROWSER=$(command -v google-chrome || command -v chromium || true)
 if [ -z "$BASE_BROWSER" ]; then
   echo "Skipping Basecamp shortcut: neither google-chrome nor chromium is installed."
   omakub_return
+  return
 fi
 
 cat <<EOF >~/.local/share/applications/Basecamp.desktop

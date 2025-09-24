@@ -7,6 +7,7 @@ fi
 if [ "$OMAKUB_ARCH" != "x86_64" ]; then
   echo "Skipping Minecraft launcher install: no native package available for architecture $OMAKUB_ARCH."
   omakub_return
+  return
 fi
 
 sudo apt install -y openjdk-8-jdk

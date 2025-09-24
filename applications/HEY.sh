@@ -8,6 +8,7 @@ HEY_BROWSER=$(command -v google-chrome || command -v chromium || true)
 if [ -z "$HEY_BROWSER" ]; then
   echo "Skipping HEY shortcut: neither google-chrome nor chromium is installed."
   omakub_return
+  return
 fi
 
 cat <<EOF >~/.local/share/applications/HEY.desktop
