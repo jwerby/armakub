@@ -9,8 +9,12 @@ LOCALSEND_VERSION=$(curl -s "https://api.github.com/repos/localsend/localsend/re
 
 case "$OMAKUB_ARCH" in
   aarch64)
-    echo "Installing LocalSend from Flatpak on ARM64."
-    flatpak install -y flathub org.localsend.localsend
+    if flatpak remote-info --arch=aarch64 flathub org.localsend.localsend >/dev/null 2>&1; then
+      echo "Installing LocalSend from Flatpak on ARM64."
+      flatpak install -y flathub org.localsend.localsend
+    else
+      echo "Skipping LocalSend install: no ARM64 build available on Flathub."
+    fi
     cd -
     omakub_return
     return
