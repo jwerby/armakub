@@ -9,8 +9,12 @@ trap 'echo "Armakub installation failed! You can retry by running: source ~/.loc
 # Ensure apt is available (stop PackageKit and wait for locks to clear)
 PACKAGEKIT_STOPPED=0
 if command -v systemctl >/dev/null 2>&1; then
-  if sudo systemctl is-active --quiet packagekit.service; then
-    sudo systemctl stop packagekit.service >/dev/null 2>&1 || true
+  if command sudo systemctl is-active --quiet packagekit.service; then
+    command sudo systemctl stop packagekit.service >/dev/null 2>&1 || true
+    command sudo systemctl stop packagekit >/dev/null 2>&1 || true
+    command sudo systemctl stop packagekit.socket >/dev/null 2>&1 || true
+    command sudo systemctl kill packagekit.service >/dev/null 2>&1 || true
+    command sudo pkill -f packagekitd >/dev/null 2>&1 || true
     PACKAGEKIT_STOPPED=1
   fi
 fi
@@ -18,7 +22,7 @@ fi
 omakub_wait_for_apt_lock() {
   local locks=(/var/lib/dpkg/lock-frontend /var/lib/dpkg/lock /var/lib/apt/lists/lock)
   for lock in "${locks[@]}"; do
-    while sudo fuser "$lock" >/dev/null 2>&1; do
+    while command sudo fuser "$lock" >/dev/null 2>&1; do
       echo "Waiting for apt to become available (lock: $lock)..."
       sleep 2
     done
@@ -26,9 +30,25 @@ omakub_wait_for_apt_lock() {
 }
 
 omakub_wait_for_apt_lock
-export -f omakub_wait_for_apt_lock
 
-trap '[ "$PACKAGEKIT_STOPPED" = "1" ] && command -v systemctl >/dev/null 2>&1 && sudo systemctl start packagekit.service >/dev/null 2>&1 || true' EXIT
+ensure_apt_ready() {
+  omakub_wait_for_apt_lock
+}
+
+sudo() {
+  if [ "$#" -gt 0 ]; then
+    case "$1" in
+      apt|apt-get)
+        ensure_apt_ready
+        command sudo "$@"
+        return
+        ;;
+    esac
+  fi
+  command sudo "$@"
+}
+
+trap '[ "$PACKAGEKIT_STOPPED" = "1" ] && command -v systemctl >/dev/null 2>&1 && command sudo systemctl start packagekit.service >/dev/null 2>&1 || true' EXIT
 
 # Check the distribution name and version and abort if incompatible
 source ~/.local/share/omakub/install/check-version.sh
